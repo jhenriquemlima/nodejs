@@ -1,12 +1,33 @@
 <% include ../header %>
 <header>
-47
-E-book gerado especialmente para Tuanny Guinami - jrmotos_colorado@hotmail.com
-5.2. Controlando as sessões de usuários Casa do Código
 <h2>Ntalk - Agenda de contatos</h2>
 </header>
 <section>
-<p>Bem-vindo <%- usuario.nome %></p>
+<form action="/contato" method="post">
+<input type="text" name="contato[nome]" placeholder="Nome">
+<input type="text" name="contato[email]" placeholder="E-mail">
+<button type="submit">Cadastrar</button>
+</form>
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>E-mail</th>
+<th>Ação</th>
+</tr>
+</thead>
+<tbody>
+<% contatos.forEach(function(contato, index) { %> <!--forEach é o mesmo que For, executa a function contato.length vezes. Cria a lista de todos os contatos-->
+<tr>
+<td><%- contato.nome %></td>
+<td><%- contato.email %></td>
+<td>
+<a href="/contato/<%- index %>">Detalhes</a>
+</td>
+</tr>
+<% }) %>
+</tbody>
+</table>
 </section>
 <% include ../exit %>
 <% include ../footer %>
